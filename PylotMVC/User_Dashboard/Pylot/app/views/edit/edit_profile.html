@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <h2>Test App</h2>
+    <p><a href="">Dashboard</a></p>
+    <p><a href="">Profile</a></p>
+    <p><a href="">Log Off</a></p><br><br>
+
+    <h2>Edit Profile</h2>
+    <p style="font-weight: bold;">Edit Information</p>    
+    <form action="" method="post">
+        <label>Email Address:</label><br>
+        <input type="text" name="email"></input><br>
+        <label>First Name:</label><br>
+        <input type="text" name="first_name"></input><br>
+        <label>Last Name:</label><br>
+        <input type="text" name="last_name"></input><br><br>
+        <input type="submit" value="Save"></input>
+    </form><br><br>
+
+    <p style="font-weight: bold;">Change Password</p><br>
+    <label>Password:</label><br>
+    <form action="" method="post">
+        <input type="password" name="password"></input><br>
+        <label>Confirm Password:</label><br>
+        <input type="password" name="confirm"></input><br><br>
+        <input type="submit" value="Update Password"></input><br><br>
+    </form>
+
+    <p style="font-weight: bold;">Edit Description</p>
+    <form action="" method="post">
+        <textarea name="description" rows="5" style="width: 50%;"></textarea><br><br>
+        <input type="submit" value="Save"></input>
+    </form>
+  </body>
+</html>

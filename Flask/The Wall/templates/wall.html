@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <h1>CodingDojo Wall</h1><hr><br>
+  <h2>Post a message</h2>
+	<form action='/postMessage' method='POST'>
+		<textarea rows="4" style="width: 50%;" name="messageText"></textarea><br><br>
+		<input type="submit" value="Post a message"></input>
+	</form><br><br>
+
+  {% for message in loggedIn: %}
+  <p style="font-weight: bold;color:blue;">{{message['first_name']}} {{message['last_name']}} - {{message['created_at']}}</p>
+  <p style="margin-bottom: 0px">&nbsp;&nbsp;&nbsp;&nbsp;{{message['message']}}</p><br>
+
+  {% for comment in commentQuery %}
+	{% if comment['messages_id']==message['messages_id'] %}
+	<p style="font-weight: bold;color:green;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment['first_name']}} {{comment['last_name']}} - {{comment['created_at']}}</p>
+ 	<p style="margin-bottom: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment['comment']}}</p><br>
+ 	{%endif%}
+ 	{%endfor%}
+
+  <p style="margin-bottom: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Post a comment</p>
+	<form action='/postComment' method='POST'>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows="2" style="width: 50%;" name="commentText"></textarea><br>
+		<input type="hidden" name="comment" value="{{message['messages_id']}}"></input>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Post a comment"></input>
+	</form><br><br>
+
+  {% endfor %}
+
+
+</body>
+</html>

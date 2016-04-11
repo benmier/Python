@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <h3>Welcome {{session['alias']}}!</h3> <br>
+    <p><a href="/books/add">Add Book and Review</a></p>
+    <p><a href="/logout">Logout</a></p><br><hr><br>
+    <h3>Recent Book Reviews:</h3><br>
+    {% for review in reviews %}
+    	<p><a href="/books/{{review['review_book_id']}}">{{review['title']}}</a></p>
+    	<p>Written by {{review['author']}}</p>
+    	<p>Rating: {{review['rating']}} stars</p>
+    	<p><a href="/users/{{review['review_user_id']}}">{{review['alias']}}</a> says: <span style="font-style: italic;">{{review['review']}}</span></p>
+    	<p>Posted on {{review['created_at']}}</p><br>
+    {% endfor %}<br><hr><br>
+
+    <h3>Other Books with Reviews:</h3>
+    {% for book in all_reviews %}
+    	<p><a href="/books/{{book['review_book_id']}}">{{book['title']}}</a></p>
+    {% endfor %}
+  </body>
+</html>

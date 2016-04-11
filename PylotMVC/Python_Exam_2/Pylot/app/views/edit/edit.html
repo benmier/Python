@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body style="margin: 15px;">
+  		<h2>Edit Task:</h2>
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              {% for message in messages %}
+                  <p style="color: red">{{message}}</p>
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+       <form action="/edit_task/{{id}}" method="post">
+        <label style="margin-right: 10px;">Date:</label>
+        <input type="test" name="date" value="{{task['date']}}"></input><br><br>
+        <label style="margin-right: 10px;">Time:</label>
+        <input type="text" name="time" value="{{task['time']}}"></input><br><br>
+        <label style="margin-right: 10px;">Task:</label>
+        <input type="text" name="title" value="{{task['title']}}"></input><br><br>
+        <label style="margin-right: 10px;">Status:</label>
+        <select name='status'>
+          <option>Pending</option>
+          <option>Done</option>
+          <option>Missed</option>
+        </select><br><br>
+        <input type="submit" value="Submit"></input>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+
+  <h2>Enter an Email Address:</h2>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color: red">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <form action='/email' method='POST'>
+    <label for="email">Email: <input type="text" name="email" id="email"></label>
+    <input type="submit" value="Submit">
+  </form><br><br>
+     <h2 style="text-decoration: underline;">Email Addresses Entered:</h2>
+  {% for email in emails: %}
+    <p style="display: inline-block;">{{email['email']}}&nbsp;&nbsp;&nbsp;&nbsp;{{email['created_at']}}</p>&nbsp;&nbsp;&nbsp;&nbsp;
+    <form action='/delete' method='POST' style="display: inline-block;">
+      <input type="hidden", name="delete" value="{{email['id']}}"></input>
+      <input type="submit", value="Delete"></input>
+    </form><br>
+  {% endfor %}
+</body>
+</html>

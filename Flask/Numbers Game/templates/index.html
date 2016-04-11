@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div id="container">
+        <h2>Welcome to the Great Number Game!</h2>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+        {% if session['message']: %}
+        <div id="message">
+            <h1>{{session['message']}}</h1>    
+        </div>
+        {%endif%}
+        {% if session['restart']: %}
+        <form action="/restart" method="post">
+            <button>Play Again?</button>
+        </form>
+        {%endif%}
+        <form action='/result' method='post'>
+            <input type='text' name='guess'><br><br>
+            <input type='submit' value='Button'>
+        </form>
+    </div>
+    </body>
+</html>

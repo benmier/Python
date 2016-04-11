@@ -1,0 +1,22 @@
+	  <table class='table table-striped'>
+        <thead>
+            <tr>
+                <th>leads_id</th>
+                <th>first name</th>
+                <th>last name</th>
+                <th>registered datetime</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in forms %}
+                <tr>
+                	<th>{{form['id']}}</th>
+                	<th>{{form['first_name']}}</th>
+                	<th>{{form['last_name']}}</th>
+                	<th>{{form['registered_datetime']}}</th>
+                	<th>{{form['email']}}</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>

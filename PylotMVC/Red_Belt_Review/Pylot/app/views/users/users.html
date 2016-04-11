@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <p><a href="/book">Home</a> <a href="/books/add">Add a Book and Review</a> <a href="/logout">Logout</a></p><br>
+    {% for user in user_info %}
+	    <p>User Alias: {{user['alias']}}</p>
+	    <p>Name: {{user['name']}}</p>
+	    <p>Email: {{user['email']}}</p>
+	    <p>Total Reviews: {{user['sum_reviews']}}</p>
+    {% endfor %}<br>
+
+    <p>Posted Reviews on the following books:</p>
+    {% for book in books %}
+    	<p><a href="/books/{{book['review_book_id']}}">{{book['title']}}</a></p>
+    {% endfor %}
+  </body>
+</html>

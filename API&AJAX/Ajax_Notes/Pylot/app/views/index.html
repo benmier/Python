@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('.textbox').focusout(function(){
+			$.post('/notes/update/'+$(this).parent().attr('id'), $(this).serialize(), function(data){
+				$('body').html(data);
+			});
+			return false;
+		});
+
+		$('.delete').click(function(){
+			$.post('/notes/delete/'+this.id, function(data){
+				$('body').html(data);
+			});
+			return false;
+		});
+
+		$('#add').submit(function(){
+			$.post('/notes/create', $(this).serialize(), function(data){
+				$('body').html(data);
+			});
+			return false;
+		});
+	});
+	</script>
+
+
+</head>
+<body>
+	<h1>Notes</h1><hr><br>
+	<div id="notes" style="width: 100%;">
+	{% for note in notes %}
+	  <div class='note' style="">
+	    <h3 style="display: inline-block; margin-right: 70px;">{{note['title']}}</h3>
+	    <form style="display: inline-block; vertical-align: bottom;" id="{{note['note_id']}}" class="delete" method="post">
+	    	<a >delete</a><br><br>
+	    </form>
+	    <form method="post" id="{{note['note_id']}}" >
+	    	<textarea placeholder="Enter description here..." class="textbox" name="descr" rows="10" cols="25">{{note['descr']}}</textarea><br><hr><br>
+	  	</form>
+	  </div>
+	{% endfor %}
+	</div>
+	<form method="post" id="add" style="margin-top: 10px;">
+          <input type="text" name="title" placeholder="Insert note title here..."><br><br>
+       	<input type="submit" value="Add Note">
+	</form>
+</body>
+</html>

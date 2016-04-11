@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show</title>
+</head>
+<body>
+	<h3>Are you sure you want to delete the following course?</h3>
+	{%for course in getCourse %}
+	<p>Name: {{course['title']}}</p>
+	<p>Description: {{course['description']}}</p><br>
+	<form action="/" style="display: inline-block; margin-right: 30px;">
+		<input type="submit" value="No"></input>
+	</form>
+	<form action="/courses/delete/{{course['id']}}" style="display: inline-block;">
+		<input type="submit" value="Yes"></input>
+	</form>
+	{%endfor%}
+</body>
+</html>

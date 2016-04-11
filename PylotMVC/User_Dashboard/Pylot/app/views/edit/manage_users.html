@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <h2>Test App</h2>
+    <p><a href="">Dashboard</a></p>
+    <p><a href="">Profile</a></p>
+    <p><a href="">Log Off</a></p><br><br>
+
+    <h2>Manage Users</h2>
+    <button href=''>Add New</button><br><br>
+    <table>
+    	<thead>
+    		<tr>
+    			<td>ID</td>
+    			<td>Name</td>
+    			<td>Email</td>
+    			<td>Created At</td>
+    			<td>User Level</td>
+    			<td>Actions</td>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		{% for %}
+    			<tr>
+    				<td>{{id}}</td>
+    				<td><a href="">{{first_name}} {{last_name}}</a></td>
+    				<td>{{email}}</td>
+    				<td>{{created_at}}</td>
+    				<td>{{user_level}}</td>
+    				<td><a href="">Edit</a> | <a href="">Remove</a></td>
+    			</tr>
+    		{% endfor %}
+    	</tbody>
+    </table>
+  </body>
+</html>

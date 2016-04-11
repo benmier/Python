@@ -1,0 +1,22 @@
+mysql.connector.errors.ProgrammingError: 1044 (42000): Access denied for user ''@'localhost' to database 'mydb'
+Fix: Provide correct user name
+
+mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+Fix: Provide correct password, which is '' for windows
+
+mysql.connector.errors.InterfaceError: 2003: Can't connect to MySQL server on 'localhosts:3306' (11001 getaddrinfo failed)
+Fix: Provide correct host name 'localhost'
+
+mysql.connector.errors.ProgrammingError: 1049 (42000): Unknown database 'mydbs'
+Fix: Provide correct database name 'mydb'
+
+mysql.connector.errors.ProgrammingError: 11446 (42S02): Table 'mydb.user' doesn't exist
+Fix: Provide correct table name 'users'
+
+mysql.connector.errors.ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROMs users' at line 1
+Fix: Provide correct SQL command 'FROM'
+
+
+
+
+

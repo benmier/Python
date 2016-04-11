@@ -1,0 +1,11 @@
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <h1>You Are Now Logged In</h1>
+  {% for user in loggedIn: %}
+  <p>Welcome {{user['first_name']}}, you are now logged in via {{user['email']}}</p>
+  {% endfor %}
+</body>
+</html>

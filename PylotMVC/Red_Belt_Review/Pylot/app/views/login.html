@@ -1,0 +1,59 @@
+<html style="margin-left: 20px;">
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  </head>
+  <body>
+    
+  <form action="/register" method="post">
+  <div class="form-group">
+  	<h3>Register</h3><br>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color: red">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+    <label>Name</label>
+    <input style="width: 50%;" type="text" class="form-control" name="name" >
+  </div>
+  <div class="form-group">
+    <label>Alias</label>
+    <input style="width: 50%;" type="text" class="form-control" name="alias" >
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input style="width: 50%;" type="text" class="form-control" name="email" >
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input style="width: 50%;" type="password" class="form-control" name="password" >
+    <label>*Password must be at least 8 characters</label>
+  </div>
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input style="width: 50%;" type="password" class="form-control" name="confirm" >
+  </div>
+  <button type="submit" class="btn btn-default">Register</button>
+</form> <br><hr><br>
+
+  <form action="/login" method="post">
+  <div class="form-group">
+  	<h3>Login</h3><br>
+    <label>Email</label>
+    <input style="width: 50%;" type="text" class="form-control" name="email" >
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input style="width: 50%;" type="password" class="form-control" name="password" >
+  </div>
+  <button type="submit" class="btn btn-default">Login</button>
+</form> <br><br>
+
+
+
+  </body>
+</html>

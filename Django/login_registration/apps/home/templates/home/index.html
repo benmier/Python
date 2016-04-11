@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration</title>
+</head>
+<body>
+	<form action="{% url 'valid-reg' %}" method="post">
+	{% csrf_token %}
+		{{form}}
+	<br><br><input type="submit" value="Register"></input>
+	</form><br><hr><br>
+
+	<form action="{% url 'valid-login' %}" method="post">
+	{% csrf_token %}
+		{{form2}}
+	<br><br><input type="submit" value="Login"></input>
+	</form>
+</body>
+</html>

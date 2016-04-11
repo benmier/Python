@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <title>Add Book and Review</title>
+  </head>
+  <body>
+    <p><a href="/book">Home</a> <a href="/logout">Logout</a></p>
+    <h3>{{title}}</h3>
+    <p>Written by {{author}}</p><br>
+    <h3>Reviews:</h3>
+    {% for review in reviews %}
+        <p>Rating: {{review['rating']}} stars</p>
+        <p><a href="/users/{{review['review_user_id']}}">{{review['alias']}}</a> says: <span style="font-style: italic;">{{review['review']}}</span></p>
+        <p>Posted on {{review['created_at']}}</p>
+        {% if review['review_user_id']==session['user_id'] %}
+            <p><a href="/delete_review/{{review['book_id']}}/{{review['review_id']}}">Delete this Review</a></p>
+        {% endif %}        
+        <hr>
+    {% endfor %}
+
+    <h3>Add a Review:</h3><br>
+    <form action="/new_review" method="post">
+        <input type="hidden" name="title" value="{{title}}"></input>
+        <input type="hidden" name="author" value="{{author}}"></input>
+        <textarea name="review" rows="4" style="width: 25%;"></textarea><br>
+        <label>Rating: </label>
+        <select name="rating">
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+        </select><br><br>
+        <input type="submit" value="Submit Review"></input>
+    </form>
+
+    
+  </body>
+</html>

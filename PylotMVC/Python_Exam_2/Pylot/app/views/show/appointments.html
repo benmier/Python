@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#test,#test1').DataTable();
+        } );
+    </script>
+  </head>
+  <body style="margin-left: 15px;">
+    <h3 style="display: inline-block; margin-right: 50%;">Hello, {{session['name']}}!</h3>
+    <a href="/logout">Logout</a><br><br>
+
+    <h4>Here are your appointments for today, {{today_str}}:</h4>
+    <table id="test" class='table table-striped'>
+        <thead>
+            <tr>
+                <th>Tasks</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                {% if task['date']==today %}
+                    <tr>
+                        <td>{{task['title']}}</td>
+                        <td>{{task['time']}}</td>
+                        <td>{{task['status']}}</td>
+                        {% if task['status']!='Done' %}
+                        <td><a href="/edit/{{task['task_id']}}">Edit</a>
+                        <a href="/delete/{{task['task_id']}}" style="margin-left: 15px;">Delete</a></td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table><br><hr><br>
+
+    
+    <h4>Your Other Appointments:</h4>
+    <table id="test1" class='table table-striped'>
+        <thead>
+            <tr>
+                <th>Tasks</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                {% if task['date']!=today %}
+                    <tr>
+                        <td>{{task['title']}}</td>
+                        <td>{{task['date']}}</td>
+                        <td>{{task['time']}}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table><br><br><br>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/add" method="post">
+        <label style="margin-right: 10px;">Date:</label>
+        <input type="test" name="date" placeholder="yyyy-mm-dd"></input><br><br>
+        <label style="margin-right: 10px;">Time:</label>
+        <input type="text" name="time" placeholder="hh:mm:ss (24 hr format)"></input><br><br>
+        <label style="margin-right: 10px;">Task:</label>
+        <input type="text" name="title"></input><br><br>
+        <input type="submit" value="Add"></input>
+    </form>
+
+  </body>
+</html>

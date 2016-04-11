@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+  <h2>Register</h2>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color: red">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <form action='/create' method='POST'>
+    <label for="first_name">First Name: <input type="text" name="first_name" id="first_name"></label><br><br>
+    <label for="last_name">Last Name: <input type="text" name="last_name" id="last_name"></label><br><br>
+    <label for="email">Email: <input type="text" name="email" id="email"></label><br><br>
+    <label for="password">Password: <input type="text" name="password" id="first_name"></label><br><br>
+    <label for="confirm">Confirm Password: <input type="text" name="confirm" id="confirm"></label><br><br>
+    <input type="submit" value="Login">
+  <br><br><hr>
+  <h2>Login</h2>
+  </form>
+    <form action='/login' method='POST'>
+    <label for="email">Email: <input type="text" name="email" id="email"></label><br><br>
+    <label for="password">Password: <input type="text2" name="password" id="first_name"></label><br><br>
+    <input type="submit" value="Login">
+  </form>
+</body>
+</html>

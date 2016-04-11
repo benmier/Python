@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(form).submit(function(){
+			$.post('/notes/create', $(this).serialize(), function(data){
+				$('#notes').html(data);
+			});
+			return false;
+		});
+	});
+	</script>
+
+
+</head>
+<body>
+	<h1>My Posts</h1>
+	
+	<form action="/notes/create" method="post" style="margin-bottom: 30px;">
+          <label>Add a note:</label><br>
+          <textarea rows="4" name="descr" style="width: 35%;"></textarea><br>
+       	<input type="submit" id="btn" value="Post it!">
+	</form>
+
+	<div id="notes" style="width: 100%;">
+	{% for note in notes %}
+	  <div class='quote' style="border:1px solid black; width: 200px; height: auto; display: inline-block; margin: 10px; padding: 10px;">
+	    <p>{{ note['descr'] }}</p>
+	  </div>
+	{% endfor %}
+	</div>
+
+</body>
+</html>

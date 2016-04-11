@@ -1,0 +1,18 @@
+<html>
+  <head>
+  	<title>Dissapearing Ninjas</title>
+  </head>
+  <body>
+    {% if color=="purple": %}
+	<img src="/static/donatello.jpg" style="height:300px; width:300px;">
+	{% else %}{% if color=="blue": %}
+    <img src="/static/leonardo.jpg" style="height:300px; width:300px;">
+    {% else %}{% if color=="orange": %}
+    <img src="/static/michelangelo.jpg" style="height:300px; width:300px;">
+    {% else %}{% if color=="red": %}
+    <img src="/static/raphael.jpg" style="height:300px; width:300px;">
+    {% else %}
+    <img src="/static/notapril.jpg">
+    {%endif%}{%endif%}{%endif%}{%endif%}
+  </body> 
+</html>

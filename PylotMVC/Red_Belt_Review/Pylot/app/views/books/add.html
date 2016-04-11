@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <title>Add Book and Review</title>
+  </head>
+  <body>
+    <p><a href="/book">Home</a> <a href="/logout">Logout</a></p>
+    <h3>Add a New Book Title and a Review: </h3><br>
+    <form action="/new_review" method='post'>
+        <label>Book Title: </label>
+        <input type="text" name="title" style="width: 25%;"></input><br><br>
+        <label>Author: </label>
+        <input type="text" name="author" style="width: 25%;"></input><br><br>
+        <label>Review: </label><br>
+        <textarea rows="4" name="review" style="width: 25%;"></textarea><br><br>
+        <label>Rating: </label>
+        <select name="rating">
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+        </select><br><br>
+        <input type="submit" value="Add Book and Review"></input>
+    </form>
+  </body>
+</html>

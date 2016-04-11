@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('.name').click(function(){
+			$(this).siblings('.name').toggle();
+			return false;
+		});
+		$('.checkbox').click(function(){
+			$('#'+$(this).siblings('.name').attr('id')).attr('style','color:lightgrey');
+		})
+		$('#add').submit(function(){
+			$.post('/tasks/create', $(this).serialize(), function(data){
+				$('body').html(data);
+			});
+			return false;
+		});
+		$('.name').focusout(function(){
+			console.log('/tasks/update/'+$(this).parent('.form').attr('id'));
+			$.post('/tasks/update/'+$(this).parent('.form').attr('id'), $(this).serialize(), function(data){
+				$('body').html(data);
+			});
+			return false;
+		});
+	});
+	</script>
+
+
+</head>
+<body>
+	<h1>List of Tasks:</h1><hr><br>
+
+	<div id="tasks" style="width: 100%;">
+	{% for task in tasks %}
+	  <div>
+	  	<form  id="{{task['task_id']}}" class="form" style="display: inline-block;">
+			<button class="edit" name="edit" style="margin-right: 5px;">Edit</button>
+			<input type="checkbox" name="checkbox" class="checkbox" style="margin-right: 5px; vertical-align: middle;"></input>
+			<label type="text" id="{{task['task_id']}}" class="name">{{task['name']}}</label>
+			<input hidden class="name" name="name" id="name_focus" value="{{task['name']}}" style="width: 400px;"></input>
+		</form>
+	  </div><br>
+	{% endfor %}
+	</div><br><br><br>
+
+	<form id="add" method="post" style="margin-top: 10px;">		         	 
+		<label>Create a New Task:</label><br>
+		<input type="text" name="name"><br><br>
+       	<input type="submit" value="Add Task">
+	</form>
+
+</body>
+</html>

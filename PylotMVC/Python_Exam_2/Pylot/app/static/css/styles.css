@@ -1,0 +1,7 @@
+* {
+  font-family: monaco;
+}
+.col-sm-6{
+	display: inline-block;
+	vertical-align: top;
+}

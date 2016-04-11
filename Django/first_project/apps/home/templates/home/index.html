@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A Web Page</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+</head>
+<body>
+	<h1>Welcome to My First Django App</h1>
+	<p>My name is {{name}}</p>
+	<p>I like to play {{sport}}</p>
+	<p>My favorite programming language is {{lang}}</p>
+</body>
+</html>

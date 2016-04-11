@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Django Dojo Gold</title>
+	{% load static %}
+	    <link rel="stylesheet" href="{% static 'home/style.css' %}" type="text/css">
+</head>
+<body>
+	<p id="gold">Your Gold:</p>
+	<input type="text" name="gold" value="{{gold}}" disabled></input>
+	<div id="container">
+		<div class="box">
+		<h3>Farm</h3>
+		<p>(earns 10-20 golds)</p><br>
+		<form action="/farm" method="post">
+			{% csrf_token %}
+			<input type="submit" name="farmButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<div class="box">
+		<h3>Cave</h3>
+		<p>(earns 5-10 golds)</p><br>
+		<form action="/cave" method="post">
+			{% csrf_token %}
+			<input type="submit" name="caveButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<div class="box">
+		<h3>House</h3>
+		<p>(earns 2-5 golds)</p><br>
+		<form action="/house" method="post">
+			{% csrf_token %}
+			<input type="submit" name="houseButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<div class="box">
+		<h3>Casino</h3>
+		<p>(earns/takes 0-50 golds)</p><br>
+		<form action="/casino" method="post">
+			{% csrf_token %}
+			<input type="submit" name="casinoButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<p>Activities:</p>
+		<div id="activitiesBox">
+		{% if activity %}
+		{% for i in activity %}
+		<p>{{i}}</p>
+		{%endfor%}
+		{% endif %}
+		</div>
+	</div>
+</body>
+</html>

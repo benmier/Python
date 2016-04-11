@@ -1,0 +1,10 @@
+git clone -b stable https://github.com/Ketul-Patel/Pylot.git
+
+virtualenv venv
+.\venv\Scripts\activate
+pip install --allow-external mysql-connector-python -r system/dependencies.txt
+python manage.py runserver
+
+
+.\venv\Scripts\activate
+python manage.py runserver

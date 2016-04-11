@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('.input').on('input',function(e){
+			$.post('/forms/update', $(this).parent().serialize(), function(data){
+				$('#table').html(data);
+			});
+			return false;
+		});
+	});
+	</script>
+
+
+</head>
+<body>
+	<form id="add" method="post" style="margin-top: 10px;">		         	 
+		<label style="margin-right: 10px;">Name:</label>
+		<input type="text" name="name" class="input" style="margin-right: 40px;">
+       	<label style="margin-right: 10px;">From:</label>
+       	<input type="text" name="from_date" id="from_date" class="input" style="width: 100px;" placeholder="yyyy-mm-dd">
+       	<label style="margin: 0px 10px 0px 30px;">To:</label>
+       	<input type="test" name="to_date" id="to_date" class="input" style="width: 100px;" value="{{today}}">
+       	<input type="hidden" name="page_number">
+	</form><br><br>
+
+	<div id="table">
+	<table class='table table-striped'>
+	        <thead>
+	            <tr>
+	                <th>leads_id</th>
+	                <th>first name</th>
+	                <th>last name</th>
+	                <th>registered datetime</th>
+	                <th>email</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            {% for form in forms %}
+	                <tr>
+	                	<th>{{form['id']}}</th>
+	                	<th>{{form['first_name']}}</th>
+	                	<th>{{form['last_name']}}</th>
+	                	<th>{{form['registered_datetime']}}</th>
+	                	<th>{{form['email']}}</th>
+	                </tr>
+	            {% endfor %}
+	        </tbody>
+	    </table>
+    </div>
+
+</body>
+</html>

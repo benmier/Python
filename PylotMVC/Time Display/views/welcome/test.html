@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New</title>
+</head>
+<body>
+<h1>test file</h1>
+<p>Sum: {{10+11}}</p>
+{% for numb in range(0,10)%}
+	{%if numb % 2 == 1%}
+	<p>{{numb}}</p>
+	{% else %}
+	<p>even</p>
+	{%endif%}
+{%endfor%}
+</body>
+</html>

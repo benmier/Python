@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <h2>Test App</h2>
+    <p><a href="">Dashboard</a></p>
+    <p><a href="/users/show/{{session['user_id']}}">Profile</a></p>
+    <p><a href="/logout">Log Off</a></p><br><br>
+    
+    <h3>{{user['first_name']}} {{user['last_name']}}</h3>
+    <p>Registered at: {{user['created_at']}}</p>
+    <p>User ID: #{{user['user_id']}}</p>
+    <p>Email Address: {{user['email']}}</p>
+    <p>Description: {{user['description']}}</p><br>
+
+    <h3>Leave a message for {{user['first_name']}}</h3>
+    <form action="/post_message" method="post">
+    	<textarea name="message" rows="4" style="width: 50%;"></textarea><br><br>
+    	<input type="submit" value="Post Message"></input>
+    </form><br>
+    {% for message in messages %}
+        <p style="color: blue;"><a href="/users/show/{{message['message_poster_id']}}">{{message['first_name']}} {{message['last_name']}}</a> wrote <span style="margin-left: 200px;">{{message['message_created_at']}}</span></p>
+        <p style="margin-left: 30px;">{{message['message']}}</p><br><br>
+    
+        {% for comment in comments %}
+            {% if comment['comment_message_id']==message['message_id'] %}
+                <p style="color: green; margin-left: 30px;"><a href="/users/show/{{comment['comment_poster_id']}}">{{comment['first_name']}} {{comment['last_name']}}</a> wrote <span style="margin-left: 200px;">{{comment['comment_created_at']}}</span></p>
+                <p style="margin-left: 60px;">{{comment['comment']}}</p><br><br>
+            {% endif %}
+        {% endfor %}
+        <form style='margin-left: 60px;' action="/post_comment/{{message['message_id']}}" method="post">
+                <textarea name="comment" rows="4" style="width: 50%;"></textarea><br><br>
+                <input type="submit" value="Post Comment"></input>
+        </form><br>
+    {% endfor %}
+
+  </body>
+    
+</html>

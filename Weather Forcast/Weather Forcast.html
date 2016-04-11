@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#btn').click(function(){
+			console.log($('#city').val())
+			var url = "http://api.openweathermap.org/data/2.5/weather?q="+$('#city').val()+"&appid=9423a7fa0d380e8cc36c2f63229171c8"
+				$.get(url, function(data) {
+					console.log(data)
+					var temp = parseInt((data.main.temp-273.15)*1.8+32)
+					$("body").append("<h1>City: "+data.name+"</h1>")
+					$('body').append("<h2>Current Weather: "+data.weather[0].description+"</h2>")
+					$('body').append('<h2>Temperature: '+temp+'</h2><hr>')
+				}, 'json');
+				return false;
+			})
+		});
+	</script>
+</head>
+<body>
+	<input type="text" id="city"><button id="btn"> Send</button></input>
+</body>
+</html>

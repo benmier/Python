@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <h2>Test App</h2>
+    <p><a href="/">Home</a></p>
+    <p><a href="/signin">Sign In</a></p>
+    <h2>Register</h2><br><br>
+    <form action="/register_user" method="post">
+    	<label>Email Address:</label><br>
+    	<input type="text" name="email"></input><br>
+      <label>First Name:</label><br>
+      <input type="text" name="first_name"></input><br>
+      <label>Last Name:</label><br>
+      <input type="text" name="last_name"></input><br>
+    	<label>Password:</label><br>
+    	<input type="password" name="password"></input><br>
+      <label>Confirm Password:</label><br>
+      <input type="password" name="confirm"></input><br><br>
+    	<input type="submit" value="Register"></input><br>
+    </form><br><br><br>
+    <a href="/signin">Already have an account? Login here</a>
+  </body>
+</html>

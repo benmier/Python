@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#from").datepicker({dateFormat: 'yy-mm-dd'});
+      $("#to").datepicker({dateFormat: 'yy-mm-dd'});
+    });
+  </script>
+  </head>
+  <body>
+    <a href="/travels" style="margin-right: 20px;">Home</a>
+    <a href="/logout">Logout</a><br><hr><br>
+
+    <h3>Add a Trip</h3><br>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/add" method="post">
+    	<label>Destination:</label>
+    	<input type="text" name="destination" style="margin-left: 10px; border: 1px solid lightgrey;"></input><br><br>
+    	<label>Description:</label>
+    	<input type="text" name="description" style="margin-left: 10px; border: 1px solid lightgrey;"></input><br><br>
+      <label>Travel Date From: </label>
+      <input type="text" name="start_date" id="from" style="margin-left: 10px; border: 1px solid lightgrey;"></input><br><br>
+      <label>Travel Date To: </label>
+      <input type="text" name="end_date" id="to" style="margin-left: 10px; border: 1px solid lightgrey;"></input><br><br>
+    	<input type="submit" value="Add"></input>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dojo Gold</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+	<p id="gold">Your Gold:</p>
+	<input type="text" name="yourGold" value="{{yourGold}}" disabled></input>
+	<div id="container">
+		<div class="box">
+		<h3>Farm</h3>
+		<p>(earns 10-20 golds)</p><br>
+		<form action="/process_monkey" method="post">
+			<input type="hidden" name="building" value="farm">
+			<input type="submit" name="farmButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<div class="box">
+		<h3>Cave</h3>
+		<p>(earns 5-10 golds)</p><br>
+		<form action="/process_monkey" method="post">
+			<input type="hidden" name="building" value="cave">
+			<input type="submit" name="caveButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<div class="box">
+		<h3>House</h3>
+		<p>(earns 2-5 golds)</p><br>
+		<form action="/process_monkey" method="post">
+			<input type="hidden" name="building" value="house">
+			<input type="submit" name="houseButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<div class="box">
+		<h3>Casino</h3>
+		<p>(earns/takes 0-50 golds)</p><br>
+		<form action="/process_monkey" method="post">
+			<input type="hidden" name="building" value="casino">
+			<input type="submit" name="casinoButton" value="Find Gold!"></input>
+		</form>
+		</div>
+		<p>Activities:</p>
+		<div id="activitiesBox">
+		{% for i in arr: %}
+		<p>{{i}}</p>
+		{%endfor%}
+		</div>
+	</div>
+</body>
+</html>

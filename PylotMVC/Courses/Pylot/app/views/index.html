@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <form action="/courses/add" method="post">
+  <div class="form-group">
+  	<h3>Add a new course</h3><br>
+    <label>Name</label>
+    <input style="width: 50%;" type="text" class="form-control" name="title" placeholder="(required)">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea style="width: 50%;" rows="4" class="form-control" name="description" placeholder="(optional)"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default">Add</button>
+</form> <br><br>
+
+
+
+  <table class='table table-striped' style="border:1px solid tan">
+   <h3 style="font-family: monaco; font-size: 24px;">Courses</h3>
+  	<thead>
+  		<tr>
+  			<th>Course Name</th>
+  			<th>Description</th>
+  			<th>Date Added</th>
+  			<th>Actions</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+		{% for course in courses %}
+		<tr>
+  			<td>{{course['title']}}</td>
+  			<td>{{course['description']}}</td>
+  			<td>{{course['created_at']}}</td>
+  			<td><a href="/courses/destroy/{{course['id']}}">Remove</a></td>
+  		</tr>
+		{% endfor %}
+  	</tbody>
+  </table>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+django-admin.py startproject login_registration
+cd login_registration
+mkdir apps
+python manage.py migrate
+cd apps
+copy NUL __init__.py
+python ../manage.py startapp home
+cd home
+copy NUL urls.py
+mkdir templates
+mkdir static
+cd templates
+mkdir home
+cd home
+copy NUL index.html
+cd ../
+cd ../
+cd static
+mkdir home
+cd home
+copy NUL style.css
+cd ../
+cd ../
+cd ../
+cd ../
+python manage.py runserver
+
+python manage.py makemigrations <app name>

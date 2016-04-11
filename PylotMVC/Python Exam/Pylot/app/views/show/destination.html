@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <a href="/travels" style="margin-right: 20px;">Home</a>
+    <a href="/logout">Logout</a><br><hr><br>
+
+    <h3>{{trip['destination']}}</h3>
+    <p>Planned By: {{trip['name']}}</p>
+    <p>Description: {{trip['description']}}</p>
+    <p>Travel Date From: {{trip['start_date']}}</p>
+    <p>Travel Date To: {{trip['end_date']}}</p><br><br>
+
+    <h3>Other Users Joining the Trip</h3>
+    {% for user in users %}
+      {% if user['name']!=trip['name'] %}
+      <p>{{user['name']}}</p>
+      {% endif %}
+    {% endfor %}
+  </body>
+</html>

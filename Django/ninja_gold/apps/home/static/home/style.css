@@ -1,0 +1,32 @@
+.box{
+	width: 170px;
+	height: 150px;
+	margin: 20px 20px 20px 0px;
+	padding: 20px;
+	border: 1px solid black;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+}
+#container{
+	height: 300px;
+	width: 100%;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 20px;
+}
+#activitiesBox{
+	width: 79%;
+	height: auto;
+	border: 1px solid black;
+	display: inline-block;
+	padding: 5px;
+}
+#activitiesBox p{
+	margin: 0px;
+	padding: 0px;
+}
+#gold{
+	display: inline;
+	margin: 20px 5px 0px 20px;
+}

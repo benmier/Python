@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interest App</title>
+</head>
+<body>
+	<a href="/interests">Back to Users and Interests</a><br><br>
+	{% for user in user %}
+	<h1>User #{{user.id}}</h1>
+	<p>Name: {{user.first_name}} {{user.last_name}}</p>
+	<p>Occupation: {{user.occupation}}</p>
+	<p>Interest: {{user.interest.name}}</p>
+	<p>Age: {{user.age}}</p>
+	{% endfor %}
+</body>
+</html>

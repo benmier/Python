@@ -1,0 +1,3 @@
+SELECT * FROM users
+JOIN tweets
+WHERE users.id = tweets.user_id
